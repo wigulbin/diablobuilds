@@ -1,6 +1,6 @@
-class itemSlot:
+class itemSlot(object):
 
-	def __init__(required, itemType, recommended, buildLink, statPriority):
+	def __init__(self, required, itemType, recommended, buildLink, statPriority):
 		self.itemType = itemType
 		self.required = required
 		if(recommended[0] != None):
@@ -8,13 +8,14 @@ class itemSlot:
 		self.buildLink = buildLink
 		self.statPriority = statPriority
 		
-	def getRequired():
-		print required
+	def getRequired(self):
+		print self.required
 	
-	def getitemType():
-		print itemType
+	def getitemType(self):
+		print self.itemType
 		
-	def getRecommended():
+	def getRecommended(self):
 		if(recommended[0] != None):
-			for i in range len(recommended):
-				print recommended(i) + "/n"
+			for i in recommended:
+				print self.i + "/n"
+	
