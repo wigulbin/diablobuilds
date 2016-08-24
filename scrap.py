@@ -35,12 +35,19 @@ def f(section_url):
 	return buildLinks
 
 def get_build_items(build_url):
+	build_url = "http://www.diablofans.com/builds/82963-s7-gr97-firebird-solo"
 	html = urlopen(build_url).read()
 	soup = BeautifulSoup(html, "html.parser")
-	
+	category = soup.find("ul", "item-selection item-equip")
+	itemName = [a.string for a in soup.findAll("a", "build-item")]
+	itemTip = [li for li in soup.findAll("li", "item-stat")]
+	print category 
+	print itemName
+	print itemTip.pop()
 
+ 
 nav = []
-nav = f("http://www.diablofans.com/builds")
-for i in range(0,50):
-	print nav[i]
-
+get_build_items("build_url")
+#nav = f("http://www.diablofans.com/builds")
+#for i in range(0,50):
+#	print nav[i]
