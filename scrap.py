@@ -1,9 +1,11 @@
 from bs4 import BeautifulSoup
 from urllib2 import urlopen
+from HTMLParser import HTMLParser
+from itemSlot import itemSlot
+from htmlstripper import strip_tags
 
 BASE_URL = "http://www.diablofans.com"
-
-
+	
 def f(section_url):
 	print section_url
 	html = urlopen(section_url).read()
@@ -42,10 +44,14 @@ def get_build_items(build_url):
 	itemName = [a.string for a in soup.findAll("a", "build-item")]
 	itemTip = [li for li in soup.findAll("li", "item-stat")]
 	print category 
-	print itemName
-	print itemTip.pop()
+	#print itemName
+	#print itemTip.pop()
+	htstring = str(itemTip.pop())
+	htmlstring = strip_tags(htstring)
+	print htmlstring
+	helm = itemSlot(str(category), "helm", str(category), build_url, htmlstring)
+	helm.getitemType()
 
- 
 nav = []
 get_build_items("build_url")
 #nav = f("http://www.diablofans.com/builds")
